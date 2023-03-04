@@ -1,10 +1,12 @@
 package jdbc;
 
+import msg.jop;
+
 public class DbSetting {
 
 	public DbSetting() {
-		
-		DbManager.db.setData("\r\n"
+		int set = 0;
+	 	set = DbManager.db.setData("\r\n"
 				+ "-- -----------------------------------------------------\r\n"
 				+ "-- Schema 2023지방_2\r\n"
 				+ "-- -----------------------------------------------------\r\n"
@@ -109,16 +111,25 @@ public class DbSetting {
 				+ "    ON UPDATE NO ACTION)\r\n"
 				+ "ENGINE = InnoDB;\r\n"
 				+ ""
-				+ "set global local_infile = 0;\r\n"
-				+ "load data infile './datafiles/user.txt' into table 2023지방_2.user lines terminated by '\\r\\n' ignore 1 lines;\r\n"
-				+ "load data infile './datafiles/division.txt' into table 2023지방_2.division lines terminated by '\\r\\n' ignore 1 lines;\r\n"
-				+ "load data infile './datafiles/book.txt' into table 2023지방_2.book lines terminated by '\\r\\n' ignore 1 lines;\r\n"
-				+ "load data infile './datafiles/likebook.txt' into table 2023지방_2.likebook lines terminated by '\\r\\n' ignore 1 lines;\r\n"
-				+ "load data infile './datafiles/rental.txt' into table 2023지방_2.rental lines terminated by '\\r\\n' ignore 1 lines;"
-				+ "");
+				+ "set global local_infile = 1;\r\n"
+				+ "load data local infile './datafiles/user.txt' into table 2023지방_2.user lines terminated by'\r' ignore 1 lines;\r\n"
+				+ "load data local infile './datafiles/division.txt' into table 2023지방_2.division lines terminated by'\r' ignore 1 lines;\r\n"
+				+ "load data local infile './datafiles/book.txt' into table 2023지방_2.book lines terminated by'\r\n' ignore 1 lines;\r\n"
+				+ "load data local infile './datafiles/likebook.txt' into table 2023지방_2.likebook lines terminated by'\r' ignore 1 lines;\r\n"
+				+ "load data local infile './datafiles/rental.txt' into table 2023지방_2.rental lines terminated by'\r' ignore 1 lines;"
+				+ ""
+				+ ""
+				+ "drop user IF EXISTS 'user'@'localhost';\n"
+				+ "\n"
+				+ "create user 'user'@'localhost' identified by '1234';\n"
+				+ "grant insert, select, delete, update on 2023지방_2.* to 'user'@'localhost';");
 		
+		if(set == -1) {
+			jop.error("셋팅 실패");
+			return;
+		}
 		
-		
+		jop.info("셋팅 성공");
 	}
 
 }

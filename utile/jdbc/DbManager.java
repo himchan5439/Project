@@ -18,7 +18,7 @@ public class DbManager {
 			+ "allowLoadLocalInfile=true&" 
 			+ "allowMultiQueries=true";
 	private static final String ID = "root";
-	private static final String PW = "1234";
+	private static final String PW = "qwasqaws12";
 	private Connection con;
 
 	public static DbManager db = new DbManager();
@@ -35,6 +35,7 @@ public class DbManager {
 
 	public int setData(String sql, Object... vals) {
 		try {
+			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
 			int count = 1;
