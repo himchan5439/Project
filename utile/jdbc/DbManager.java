@@ -10,15 +10,15 @@ import java.util.Vector;
 
 public class DbManager {
 
-	private static final String URL = "jdbc:mysql://localhost/?" 
+	private static final String URL = "jdbc:mysql://localhost/2023지방_2?" 
 			+ "useSSL=false&" 
 			+ "allowPublicKeyRetrieval=true&"
 			+ "ChacterEncoing=UTF8&" 
 			+ "severTimezone=TUC&" 
 			+ "allowLoadLocalInfile=true&" 
 			+ "allowMultiQueries=true";
-	private static final String ID = "root";
-	private static final String PW = "qwasqaws12";
+	private static final String ID = "user";
+	private static final String PW = "1234";
 	private Connection con;
 
 	public static DbManager db = new DbManager();

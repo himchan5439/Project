@@ -1,9 +1,9 @@
 package main;
 
-import jdbc.DbSetting;
+import windows.MainFrame;
 
 public class MainClass {
 	public static void main(String[] args) {
-		new DbSetting();		
+		new MainFrame();
 	}
 }
